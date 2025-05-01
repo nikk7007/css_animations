@@ -1,0 +1,59 @@
+.itemCheck input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.itemCheck {
+  --size-checkmark: 32px;
+  --main-color: var(--color1);
+  --clr: var(--white);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: .5em;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size-checkmark);
+}
+
+.checkmark {
+  height: var(--size-checkmark);
+  width: var(--size-checkmark);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: var(--clr);
+  border-radius: .5rem;
+  
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: 300ms cubic-bezier(0.83, 0, 0.17, 1);
+  
+  &::after {
+    content: "";
+    width: calc(var(--size-checkmark) /5);
+    height: calc(var(--size-checkmark) /2.5);
+    border: solid var(--clr);
+    border-width: 0 calc(var(--size-checkmark) /10) calc(var(--size-checkmark) /10) 0;
+    transform: rotate(45deg);
+  }
+}
+
+.itemCheck > label {
+  color: var(--clr);
+  transition: 300ms cubic-bezier(0.83, 0, 0.17, 1);
+
+}
+
+.itemCheck input:checked{
+  & ~ .checkmark {
+    background-color: var(--main-color);
+  } 
+
+  & ~ label {
+    filter: brightness(.7);
+  }
+}
