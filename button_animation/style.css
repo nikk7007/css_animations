@@ -1,3 +1,11 @@
+@import url('./styles/basic.css');
+@import url('./styles/bubbles.css');
+@import url('./styles/slice.css');
+@import url(./styles/ball.css);
+@import url(./styles/ball2.css);
+@import url(./styles/foldy.css);
+@import url(./styles/foldy2.css);
+
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +17,7 @@
 :root {
   --bgColor: #070112;
   --bgColor10: #1f1a32;
+  --white: #eee;
   --color2: #244c6a;
   --color1: #00a1b7;
   --size-large: calc(8px * 6);
@@ -16,7 +25,7 @@
 }
 
 *::selection {
-  background-color: #eee;
+  background-color: var(--white);
   color: var(--bgColor);
 }
 
@@ -36,12 +45,12 @@ header {
 }
 
 main {
-  padding: 1em 5em;
+  padding: 1em 10%;
   min-height: 90dvh;
 }
 
 #gallery {
-  padding: 3em 5em;
+  padding: 3em 10%;
 
   border-radius: 1em;
   background-color: var(--bgColor10);
@@ -52,12 +61,13 @@ main {
   flex-wrap: wrap;
   gap: 3em;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 #gallery > .card {
-  padding: 3em;
-  padding-top: calc(3em + 1.3em + 1em);
+  --paddind: 5%;
+  padding: var(--paddind);
+  padding-top: calc(var(--paddind) + 1.3em + 1em);
 
   border: 3px solid var(--bgColor);
   border-radius: 1em;
@@ -76,6 +86,7 @@ main {
     font-size: 1.3em;
     position: absolute;
     inset: 0;
+    text-wrap-mode: nowrap;
 
     background-color: var(--color2);
   }

@@ -1,6 +1,6 @@
-.bubbles {
-  /* --c1: ; */
-  /* --c2: ; */
+.ball {
+  /* --c1: var(--bgColor); */
+  /* --c2: var(--color2); */
   --size-letter: var(--size-medium);
   --transition: cubic-bezier(0.83, 0, 0.17, 1);
 
@@ -15,52 +15,44 @@
   overflow: hidden;
   position: relative;
   transition: 300ms var(--transition);
+
+  & > span {
+    font-weight: 700;
+    color: var(--c2);
+    position: relative;
+    z-index: 1;
+    transition: color 700ms var(--transition);
+  }
 }
 
-.bubbles > span {
-  font-weight: 700;
-  color: var(--c2);
-  position: relative;
-  z-index: 1;
-  transition: color 700ms var(--transition);
-}
-
-.bubbles::before {
-  top: 0;
-  left: 0;
-}
-
-.bubbles::after {
-  top: 100%;
-  left: 100%;
-}
-
-.bubbles::before,
-.bubbles::after {
+.ball::after {
   content: '';
-  width: 150%;
-  aspect-ratio: 1/1;
+
+  width: 120%;
   scale: 0;
-  transition: 1000ms var(--transition);
+  aspect-ratio: 1/1;
 
   background-color: var(--c2);
-  border-radius: 50%;
+  border-radius: 46% 54% 70% 30% / 73% 45% 55% 27%  ;
 
   position: absolute;
+  inset: 50%;
   translate: -50% -50%;
+  transition: 1000ms var(--transition);
 }
 
-.bubbles:hover {
+.ball:hover {
   & > span {
     color: var(--c1);
   }
-  &::before,
-  &::after{
+
+  &::after {
     scale: 1;
+    border-radius: 50%;
   }
 }
 
-.bubbles:active {
-  scale: 0.98;
+.ball:active {
+  scale: .98;
   filter: brightness(0.9);
 }

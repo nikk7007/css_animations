@@ -1,0 +1,70 @@
+.foldy {
+  /* --c1: var(--bgColor); */
+  /* --c2: var(--color2); */
+  --size-letter: var(--size-medium);
+  --transition: cubic-bezier(0.83, 0, 0.17, 1);
+  padding: .5em 1em;
+  font-size: var(--size-letter);
+  
+  background-color: transparent;
+  border: calc(var(--size-letter) / 6) solid var(--c2);
+  border-radius: .2em;
+  cursor: pointer;
+  
+  overflow: hidden;
+  position: relative;
+  transition: 300ms var(--transition);
+
+  & > span {
+    font-weight: 700;
+    color: var(--c2);
+    position: relative;
+    z-index: 1;
+    transition: color 700ms var(--transition);
+  }
+
+  &::before{
+    inset: -.5em;
+    translate: -100% -100%;
+    transform-origin: bottom right;
+  }
+
+  &::after {
+    inset: calc(100% + .5em);
+    transform-origin: top left;
+  }
+}
+
+.foldy::before,
+.foldy::after {
+  content: '';
+  width: 60%;
+  height: calc(100% + 1em);
+
+  background-color: var(--c2);
+
+  position: absolute;
+  rotate: 90deg;
+  transition: 1000ms var(--transition);
+
+}
+
+.foldy:hover {
+  
+  &::before {
+    rotate: 180deg;
+  }
+
+  &::after{
+    rotate: 180deg;
+  }
+
+  & > span {
+    color: var(--c1);
+  }
+}
+
+.foldy:active {
+  scale: .98;
+  filter: brightness(0.9);
+}
